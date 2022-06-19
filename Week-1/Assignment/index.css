@@ -79,16 +79,16 @@ td {
   font-weight: bold;
 }
 
-.footer-side {
+.songBox-side {
   background: #4747fb;
-  padding: 8px;
+  padding: 5px;
   display: flex;
   justify-content: space-between;
 }
 
-.footer-side > div > img {
-  height: 80px;
-  width: 80px;
+.songBox-side > div > img {
+  height: 60px;
+  width: 60px;
 }
 
 .group-btn {
@@ -98,7 +98,19 @@ td {
 }
 
 .group-btn > button {
-    background: none;
-    border: none;
-    color: white;
+  background: none;
+  border: none;
+  color: white;
+}
+
+.song-text {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: space-evenly;
+  margin-left: 10px;
+}
+
+.song-text > p {
+  width: 100%;
+  color: white;
 }
