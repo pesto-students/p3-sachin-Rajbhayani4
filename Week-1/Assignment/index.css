@@ -18,6 +18,11 @@
   background-color: rgb(197, 197, 197);
 }
 
+.sidebar > button {
+  border: none;
+  background: none;
+}
+
 .my-auto {
   margin: auto 0px;
 }
