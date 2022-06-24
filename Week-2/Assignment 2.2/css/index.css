@@ -18,26 +18,26 @@
   transform-origin: top left; */
 }
 
-.box-5:hover {
+.main-box:hover .box-5 {
   transform: rotate(90deg);
 }
 
-.box-6:hover {
+.main-box:hover .box-6 {
   transform: rotate(-90deg);
 }
 
-.box-7:hover {
+.main-box:hover .box-7 {
   transform: rotate(-90deg);
 }
 
-.box-8:hover {
+.main-box:hover .box-8 {
   transform: rotate(90deg);
 }
 
 .hi-text {
   position: absolute;
-  top: 80px;
-  left: 38%;
+  top: 180px;
+  left: 44%;
 }
 
 .box-s {
