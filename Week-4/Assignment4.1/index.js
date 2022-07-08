@@ -125,7 +125,6 @@ const getNumber = new MyPromise((res, rej) => {
 
 getNumber.then((val) => {
     console.log(`%c ${val} `, 'background: #ffffff; color: #0000ff');
-    // console.log(val);
 }).catch((err) => {
     console.log(`%c ${err} `, 'background: #ffffff; color: #ff0000');
 });
