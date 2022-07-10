@@ -25,13 +25,9 @@ class MyPromise {
 
     updateResult(value, state) {
         setTimeout(() => {
-            if (this.state !== STATE.PENDING) {
-                return;
-            }
+            if (this.state !== STATE.PENDING) return;
 
-            if (isThenable(value)) {
-                return value.then(this._resolve, this._reject);
-            }
+            if (isThenable(value)) return value.then(this._resolve, this._reject);
 
             this.value = value;
             this.state = state;
@@ -46,14 +42,11 @@ class MyPromise {
     }
 
     executeHandlers() {
-        if (this.state === STATE.PENDING) {
-            return null;
-        }
+        if (this.state === STATE.PENDING) return null;
 
         this.handlers.forEach((handler) => {
-            if (this.state === STATE.FULFILLED) {
-                return handler.onSuccess(this.value);
-            }
+            if (this.state === STATE.FULFILLED) return handler.onSuccess(this.value);
+
             return handler.onFail(this.value);
         });
         this.handlers = [];
@@ -63,9 +56,8 @@ class MyPromise {
         return new MyPromise((res, rej) => {
             this.addHandlers({
                 onSuccess: function (value) {
-                    if (!onSuccess) {
-                        return res(value);
-                    }
+                    if (!onSuccess) return res(value);
+
                     try {
                         return res(onSuccess(value))
                     } catch (err) {
@@ -103,9 +95,8 @@ class MyPromise {
                 val = err;
                 return callback();
             }).then(() => {
-                if (!wasRejected) {
-                    return res(val);
-                }
+                if (!wasRejected) return res(val);
+
                 return rej(val);
             })
         })
