@@ -7,7 +7,7 @@ const mathOperations = {
         return a - b;
     },
     product: function (a, b) {
-        return a * b
+        return a * b;
     }
 }
 module.exports = mathOperations;
