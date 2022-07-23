@@ -7,7 +7,7 @@ const SpiralOrder = (matrix) => {
     let endRow = rowCount - 1;
     let startColumn = 0;
     let endColumn = columnCount - 1;
-
+s
     while (endRow >= startRow && endColumn >= startColumn) {
         for (let column = startColumn; column <= endColumn; column++) {
             result.push(matrix[startRow][column]);
