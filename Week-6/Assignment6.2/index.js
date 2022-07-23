@@ -1,4 +1,4 @@
-const walkMatrix = (matrix) => {
+const SpiralOrder = (matrix) => {
     const result = [];
 
     const rowCount = matrix.length;
@@ -44,4 +44,4 @@ const n = [
     [4, 5, 6],
     [7, 8, 9]
 ];
-console.log(walkMatrix(n))
+console.log(SpiralOrder(n));
