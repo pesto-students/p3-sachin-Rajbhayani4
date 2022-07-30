@@ -15,4 +15,4 @@ const reverseList = (head) => {
 
 const head = [1,2,3,4,5];
     
-console.log(reverseList(head)," Programiz!");
+console.log(reverseList(head));
