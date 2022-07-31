@@ -37,6 +37,4 @@ const checkBrackets = (val) => {
     return (stack.length == 0);
 }
 
-let val = "([{}])";
-
-console.log(checkBrackets(val));
+console.log(checkBrackets("(name: [{lastName: "demoLastName", age: 12},] )"));
