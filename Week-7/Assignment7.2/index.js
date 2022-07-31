@@ -49,9 +49,13 @@ const printList = () => {
     }
     return arr;
 }
-for (i = 60; i >= 10; i -= 10)
-    push(i);
+const pushValue = (num) => {
+    for(let i = num; i > 0; i--){
+    push(Math.floor(Math.random() * 10));
+    }
+}
 
+pushValue(8);
 console.log(printList());
 
 rotate(4);
