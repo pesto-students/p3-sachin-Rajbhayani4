@@ -3,7 +3,6 @@ node_modules
 
 # yarn
 yarn.lock
-package.json
 
 # testing
 /coverage
