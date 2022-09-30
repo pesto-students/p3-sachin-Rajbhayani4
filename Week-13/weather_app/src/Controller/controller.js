@@ -107,11 +107,44 @@ const filterData = (req, res) => {
     const { search } = req.body;
 
     if (search) {
+        const searchData = (searchCase) => {
+            const result = [];
+            let search = searchCase.toLowerCase();
+            for (let i = 0; i < cities.length; i++) {
 
-        const searchResult = cities.filter(item => (item?.city?.findname).toLowerCase() === search.toLowerCase());
+                for (const prop in cities[i]) {
+
+                    if (prop != 'time') {
+                        let condtion = prop == 'weather' ? cities[i][prop][0] : cities[i][prop];
+
+                        for (let l in condtion) {
+
+                            if (condtion[l].toString().toLowerCase().indexOf(search) != -1) result.push(cities[i]);
+                            if (l == "coord") {
+                                for (let j in condtion[l]) {
+
+                                    if (condtion[l][j].toString().toLowerCase().indexOf(search) != -1) result.push(cities[i]);
+                                }
+                            }
+                        }
+                    }
+                }
+
+            }
+            const unique = result.filter(ele => {
+                const isDuplicate = result.includes(ele.city.name);
+                if (!isDuplicate) {
+                    result.push(ele.city.name); return true;
+                } return false;
+            })
+
+            return unique
+        }
+
+        const data = searchData(search);
         return res.json({
             status: true,
-            data: searchResult[0]
+            data: data
         })
 
     } else {
