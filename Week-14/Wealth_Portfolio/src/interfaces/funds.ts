@@ -1,6 +1,6 @@
-import { Types } from "mongoose";
+import { Types, Document } from "mongoose";
 
-export interface funds {
+export interface funds extends Document {
     type: string
     value: number
     description: string

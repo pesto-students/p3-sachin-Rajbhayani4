@@ -6,6 +6,7 @@ import { IUser } from "../interfaces/user";
 const userSchema = new Schema<IUser>({
     username: {
         type: "string",
+        required: true
     },
     fullName: {
         type: "string",
@@ -16,14 +17,14 @@ const userSchema = new Schema<IUser>({
         index: true,
         trim: true,
         lowercase: true,
-        validate: [validator.isEmail, "Invalid Email"]
+        validate: [validator.isEmail, "Invalid Email"],
     },
     password: {
         type: String,
         required: [true, "Password is required"],
         trim: true,
         minlength: [8, "Password must be at least 8 characters"],
-        maxlength: [128, "Password max length exceed"]
+        maxlength: [128, "Password max length exceed"],
     },
     age: {
         type: Number
@@ -40,6 +41,18 @@ const userSchema = new Schema<IUser>({
 }, {
     timestamps: true
 });
+
+// userSchema.pre("save", async function () {
+//     const user = this;
+//     if (user.isModified("password")) {
+//         const saltRounds = 10;
+//         user.password = await bcrypt.hash(this.password, saltRounds);
+//     }
+// });
+
+// userSchema.methods.validatePassword = async function (password: string) {
+//     return await bcrypt.compare(password, this.password);
+// };
 
 userSchema.pre("save", async function () {
     const user = this;

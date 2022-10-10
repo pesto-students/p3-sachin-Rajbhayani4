@@ -1,8 +1,8 @@
-import { Types } from "mongoose";
+import { Types, Document } from "mongoose";
 
-export interface incomeExpenses {
-    income: number
-    expense: number
+export interface incomeExpenses extends Document {
+    type: string
+    value: number
     description: string
     userId: Types.ObjectId
     date: Date
