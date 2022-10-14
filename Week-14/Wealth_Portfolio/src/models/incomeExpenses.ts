@@ -32,6 +32,9 @@ const incomeExpensesSchema: Schema = new Schema<incomeExpenses>({
         type: Date,
         required: true
     },
+    image: {
+        type: String,
+    },
     isDeleted: {
         type: Boolean,
         default: false

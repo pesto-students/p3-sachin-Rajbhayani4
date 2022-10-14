@@ -1,13 +1,15 @@
 import express from "express";
-import { addIncomeAndExpenses, getIncomeAndExpenses, updateIncomeAndExpenses } from "../controllers/incomeExpenses"
+import { addIncomeAndExpenses, getIncomeAndExpenses, updateIncomeAndExpenses } from "../controllers/incomeExpenses";
+import { authUsers } from "../middleware/auth";
+import { upload } from "../middleware/fileUploads";
 const router = express.Router();
 
-router.post('/create', addIncomeAndExpenses);
+router.post('/create', authUsers, upload, addIncomeAndExpenses);
 
-router.post('/get', getIncomeAndExpenses);
+router.post('/get', authUsers, getIncomeAndExpenses);
 
-router.post('/update', updateIncomeAndExpenses);
+router.post('/update', authUsers, updateIncomeAndExpenses);
 
-router.post('/delete', updateIncomeAndExpenses);
+router.post('/delete', authUsers, updateIncomeAndExpenses);
 
 export default router;

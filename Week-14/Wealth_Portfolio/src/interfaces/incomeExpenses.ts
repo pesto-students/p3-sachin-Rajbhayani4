@@ -5,6 +5,7 @@ export interface incomeExpenses extends Document {
     value: number
     description: string
     userId: Types.ObjectId
+    image: string
     date: Date
     isDeleted: boolean
 }

@@ -1,13 +1,14 @@
 import express from "express";
-import { addFunds, getFunds, updateFunds } from "../controllers/funds"
+import { addFunds, getFunds, updateFunds } from "../controllers/funds";
+import { authUsers } from "../middleware/auth";
 const router = express.Router();
 
-router.post('/create', addFunds);
+router.post('/create', authUsers, addFunds);
 
-router.post('/get', getFunds);
+router.post('/get', authUsers, getFunds);
 
-router.post('/update', updateFunds);
+router.post('/update', authUsers, updateFunds);
 
-router.post('/delete', updateFunds);
+router.post('/delete', authUsers, updateFunds);
 
 export default router

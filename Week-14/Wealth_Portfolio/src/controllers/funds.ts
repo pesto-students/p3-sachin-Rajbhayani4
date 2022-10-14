@@ -3,13 +3,13 @@ import Funds from '../models/funds';
 
 const ObjectId = require("mongoose").Types.ObjectId;
 
-export const addFunds = (req: Request, res: Response) => {
-
-    const { type, value, userId, description, date } = req?.body;
+export const addFunds = (req: any, res: Response) => {
+    const { userId, username, fullName, email, age, gender } = req;
+    const { type, value, description, date } = req?.body;
 
     if (Object.keys(req?.body).length > 0) {
 
-        if (type && value && userId && date) {
+        if (type && value && date) {
 
             Funds.create({ type, value, userId, description, date }).then((data: any) => {
                 return res.json({
@@ -39,11 +39,11 @@ export const addFunds = (req: Request, res: Response) => {
 
 }
 
-export const getFunds = (req: Request, res: Response) => {
+export const getFunds = (req: any, res: Response) => {
+    const { userId, username, fullName, email, age, gender } = req;
+    const { page, limit } = req?.body;
 
-    const { id, page, limit } = req?.body;
-
-    let query = { $and: [{ _id: id }, { isDeleted: false }] };
+    let query = { $and: [{ userId }, { isDeleted: false }] };
 
     Funds.paginate(query, { page, limit }).then((data: any) => {
         return res.json({
@@ -58,12 +58,12 @@ export const getFunds = (req: Request, res: Response) => {
     })
 }
 
-export const updateFunds = (req: Request, res: Response) => {
-
+export const updateFunds = (req: any, res: Response) => {
+    const { userId, username, fullName, email, age, gender } = req;
     const { id, updateItem } = req?.body;
 
     if (id) {
-        Funds.findOneAndUpdate({ id, isDeleted: false }, updateItem, { new: true }).then((result: any) => {
+        Funds.findOneAndUpdate({ id, userId, isDeleted: false }, updateItem, { new: true }).then((result: any) => {
             if (result !== null) {
                 return res.json({
                     status: true,
@@ -93,4 +93,4 @@ export const updateFunds = (req: Request, res: Response) => {
             message: "Enter a required value"
         })
     }
-}
+};

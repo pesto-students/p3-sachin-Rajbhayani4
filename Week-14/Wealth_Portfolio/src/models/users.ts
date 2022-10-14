@@ -31,7 +31,7 @@ const userSchema = new Schema<IUser>({
     },
     gender: {
         type: String,
-        enum: ["male", "female"],
+        enum: ["male", "female", "others"],
         default: "User"
     },
     isDeleted: {
